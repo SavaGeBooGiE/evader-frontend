@@ -1,0 +1,90 @@
+@import '../../sass/mixins';
+@import '../../sass/variables';
+@import '../../sass/fonts';
+
+.sidebar_container {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: white;
+  background-color: $bg-dark;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar_expand {
+  width: 250px;
+}
+
+.sidebar_collapse {
+  width: 80px;
+}
+
+@media (max-width: 767px) {
+  .sidebar_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 120;
+  }
+
+  .sidebar_collapse {
+    width: 0px;
+  }
+}
+
+.sidebar_list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar_list_item {
+  width: 100%;
+  color: white;
+  font-size: 1.1rem;
+  background-color: $bg-dark;
+  padding-right: 0;
+  padding-left: 0;
+
+  @media (max-width: 575px) {
+    font-size: 1rem;
+  }
+}
+
+.sidebar_link {
+  width: 100%;
+  @include link(white);
+  position: relative;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    height: 100%;
+    width: 3px;
+    transform: scaleX(0);
+    background-color: $bg-primary;
+  }
+
+  &:hover {
+    background-color: rgba(white, 0.1);
+  }
+
+  &:hover:before {
+    transform: scaleX(1);
+  }
+}
+
+.sidebar_link_active {
+  &::before {
+    transform: scaleX(1);
+  }
+}
+
+.logout_button {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  padding: 0;
+}
